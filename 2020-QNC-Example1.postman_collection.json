@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "9a21341c-b942-4272-91e6-5a86edad1637",
+		"name": "2020-QNC-Example1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "The Internet Chuck Norris DB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ebbbeeb-91ab-412f-a2b4-9edd6a7d171e",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"norrisism\", jsonData.value.joke);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.icndb.com/jokes/random",
+					"protocol": "https",
+					"host": [
+						"api",
+						"icndb",
+						"com"
+					],
+					"path": [
+						"jokes",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yoda Translator",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8dc447c4-3e61-4ddc-952a-88cc9871bf26",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"yoda-norrisism\", jsonData.contents.translated);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"{{norrisism}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.funtranslations.com/translate/yoda/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"funtranslations",
+						"com"
+					],
+					"path": [
+						"translate",
+						"yoda",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
